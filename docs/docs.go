@@ -17,17 +17,17 @@ const docTemplate = `{
     "paths": {
         "/login": {
             "post": {
-                "description": "Authenticate a user with login and password",
+                "description": "Autenticar um usuário com login e senha",
                 "consumes": [
                     "application/json"
                 ],
                 "produces": [
                     "application/json"
                 ],
-                "summary": "Authenticate a user",
+                "summary": "Autenticar um usuário",
                 "parameters": [
                     {
-                        "description": "User Credentials",
+                        "description": "Credenciais do usuário",
                         "name": "credentials",
                         "in": "body",
                         "required": true,
@@ -48,17 +48,17 @@ const docTemplate = `{
         },
         "/register": {
             "post": {
-                "description": "Create a new user by providing the username, login, and password",
+                "description": "Crie um novo usuário fornecendo o nome de usuário, login e senha",
                 "consumes": [
                     "application/json"
                 ],
                 "produces": [
                     "application/json"
                 ],
-                "summary": "Create a new user",
+                "summary": "Criar um novo usuário",
                 "parameters": [
                     {
-                        "description": "User Registration",
+                        "description": "Registro de usuário",
                         "name": "user",
                         "in": "body",
                         "required": true,
@@ -80,7 +80,7 @@ const docTemplate = `{
     },
     "definitions": {
         "handlers.AuthResponse": {
-            "description": "DTO for authentication response",
+            "description": "DTO para resposta de autenticação",
             "type": "object",
             "properties": {
                 "autenticado": {
@@ -101,7 +101,7 @@ const docTemplate = `{
             }
         },
         "handlers.LoginDTO": {
-            "description": "DTO for user login",
+            "description": "DTO para login do usuário",
             "type": "object",
             "properties": {
                 "senha": {
@@ -113,7 +113,7 @@ const docTemplate = `{
             }
         },
         "handlers.RegisterDTO": {
-            "description": "DTO for user registration",
+            "description": "DTO para registro de usuário",
             "type": "object",
             "properties": {
                 "senha": {
@@ -128,35 +128,23 @@ const docTemplate = `{
             }
         },
         "models.User": {
-            "description": "User model with GORM fields",
+            "description": "Modelo de usuário com campos GORM",
             "type": "object",
             "properties": {
-                "createdAt": {
-                    "description": "@Description Timestamp when the user was created",
-                    "type": "string"
-                },
-                "deletedAt": {
-                    "description": "@Description Timestamp when the user was deleted",
-                    "type": "string"
-                },
                 "id": {
-                    "description": "@Description The unique identifier for the user",
+                    "description": "@Description O identificador exclusivo do usuário",
                     "type": "integer"
                 },
                 "senha": {
-                    "description": "@Description User's password",
-                    "type": "string"
-                },
-                "updatedAt": {
-                    "description": "@Description Timestamp when the user was last updated",
+                    "description": "@Description Senha do usuário",
                     "type": "string"
                 },
                 "usuarioLogin": {
-                    "description": "@Description User's login",
+                    "description": "@Description Login do usuário",
                     "type": "string"
                 },
                 "usuarioNome": {
-                    "description": "@Description User's full name",
+                    "description": "@Description Nome completo do usuário",
                     "type": "string"
                 }
             }
