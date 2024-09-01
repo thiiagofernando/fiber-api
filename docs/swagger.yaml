@@ -1,0 +1,102 @@
+definitions:
+  handlers.AuthResponse:
+    description: DTO for authentication response
+    properties:
+      autenticado:
+        type: boolean
+      dataHoraExpiracao:
+        type: string
+      token:
+        type: string
+      usuarioLogin:
+        type: string
+      usuarioNome:
+        type: string
+    type: object
+  handlers.LoginDTO:
+    description: DTO for user login
+    properties:
+      senha:
+        type: string
+      usuarioLogin:
+        type: string
+    type: object
+  handlers.RegisterDTO:
+    description: DTO for user registration
+    properties:
+      senha:
+        type: string
+      usuarioLogin:
+        type: string
+      usuarioNome:
+        type: string
+    type: object
+  models.User:
+    description: User model with GORM fields
+    properties:
+      createdAt:
+        description: '@Description Timestamp when the user was created'
+        type: string
+      deletedAt:
+        description: '@Description Timestamp when the user was deleted'
+        type: string
+      id:
+        description: '@Description The unique identifier for the user'
+        type: integer
+      senha:
+        description: '@Description User''s password'
+        type: string
+      updatedAt:
+        description: '@Description Timestamp when the user was last updated'
+        type: string
+      usuarioLogin:
+        description: '@Description User''s login'
+        type: string
+      usuarioNome:
+        description: '@Description User''s full name'
+        type: string
+    type: object
+info:
+  contact: {}
+paths:
+  /login:
+    post:
+      consumes:
+      - application/json
+      description: Authenticate a user with login and password
+      parameters:
+      - description: User Credentials
+        in: body
+        name: credentials
+        required: true
+        schema:
+          $ref: '#/definitions/handlers.LoginDTO'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/handlers.AuthResponse'
+      summary: Authenticate a user
+  /register:
+    post:
+      consumes:
+      - application/json
+      description: Create a new user by providing the username, login, and password
+      parameters:
+      - description: User Registration
+        in: body
+        name: user
+        required: true
+        schema:
+          $ref: '#/definitions/handlers.RegisterDTO'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/models.User'
+      summary: Create a new user
+swagger: "2.0"
